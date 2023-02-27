@@ -1,0 +1,17 @@
+service:
+  name: nginx-service
+  type: LoadBalancer
+  app: nginx-service
+  protocol: TCP
+  port: 80
+
+
+mynginx:
+  name: nginx-service
+  label: nginx
+  replicas: 2
+  image: nginx:1.16.0
+  imagePullPolicy: Always
+  containerPort: 80
+  protocol : TCP
+
