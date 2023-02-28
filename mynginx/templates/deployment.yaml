@@ -2,18 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.mynginx.name }}
+  labels:
+    app: {{ .Values.mynginx.app }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.mynginx.name }}
+      app: {{ .Values.mynginx.app }}
   replicas: {{ .Values.mynginx.replicas }}
   template:
     metadata:
       labels:
-        app: {{ .Values.mynginx.name }}
+        app: {{ .Values.mynginx.app }}
     spec:
       containers:
-        - name: {{ .Values.mynginx.name }}
+        - name: {{ .Values.mynginx.app }}
           image: {{ .Values.mynginx.image }}
           imagePullPolicy: {{ .Values.mynginx.imagePullPolicy }}
           ports:
