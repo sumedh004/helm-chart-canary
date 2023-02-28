@@ -1,0 +1,15 @@
+service:
+  name: apache-service
+  type: NodePort
+  app: product
+  protocol: TCP
+  port: 80
+
+
+mynginx:
+  name: apache-service
+  replicas: 3
+  image: httpd
+  imagePullPolicy: Always
+  containerPort: 80
+  protocol : TCP
